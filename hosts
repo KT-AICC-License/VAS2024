@@ -1,0 +1,18 @@
+#control 호스트- 주석  - ansible inventory  예
+[control]
+ansible-control ansible_host=10.217.180.173
+[t1]
+#hostname ansible_host=ip address,
+target1 ansible_host=10.217.180.57
+[t2]
+target2 ansible_host=10.217.180.100
+#all은 내장 변수로 모든 호스트 의미
+[all:vars]
+ansible_ssh_user=ansible
+ansible_ssh_private_key_file=~/.ssh/id_rsa
+#호스트 ssh key 체킹을 strict no
+ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+#아래와 같은 현상을 방지하는 옵션(StrictHostKeyChecking=no)
+#The authenticity of host '123.123.123 (123.123.123)' can't be established.
+#ECDSA key fingerprint is 87:a8:8a:50:9c:a9:87:3e:c5:17:6d:b0:f1:28:7e:d3.
+#Are you sure you want to continue connecting (yes/no)?
